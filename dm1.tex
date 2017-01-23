@@ -45,4 +45,13 @@ Thus, the \textit{Forth} rule is true for $Z$, as every pair in relation with $Z
 
 \paragraph{Conclusion} $Z$ is a non-empty bisimulation between the two Kripke models. The two Kripke models are thus bisimilar.
 
+
+\question{2} The smallest Kripke model bisimilar to $\mathcal{M}$ must have at least one world, for the bisimulation to be non-empty.
+
+The Kripke model with only one world in which the propositional letter $t$ is true is bisimilar to $\mathcal{M}$. Let $w$ be this world.
+
+We then define $Z$ the bisimulation such that $9\ Z\ w$. $Z$ is a bisimulation : in both $9$ and $w$, only $t$ is true, and both $9$ and $w$ have no successors. And this Kripke model is the smallest possible as it only has one world.
+
+The Kripke contraction is thus $(\{w\},\emptyset,V)$ such that $V(w)=\mathit{true}$.
+
 \end{document}
