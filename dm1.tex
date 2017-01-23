@@ -1,6 +1,10 @@
 \documentclass[12pt]{article}
 
 \usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
 
 \author{Aur\`ele Barri\`ere}
 \title{LRC DM 1}
@@ -14,7 +18,31 @@
 \maketitle
 
 \exercise{1}
-\question{1} First answer.
+\question{1} 
+We show that the two Kripke models are bisimilar by giving a bisimulation relation between the two.
+Let $R_{a1}, R_{b1}$ be the accessibility relations of the first Kripke model, and $R_{a2}, R_{b2}$ the accessibility relations of the second one.
 
+Consider $Z$ the following binary relation :
+$$\left\{
+\begin{array}{l}
+\forall n\in\mathbb{N},\quad w\ Z\ w^n \\
+\forall n\in\mathbb{N},\quad v\ Z\ v^n
+\end{array}
+\right.$$
+
+Let's show that the relation $Z$ is a bisimulation.
+\paragraph{Atom} Every world in each Kripke model make true the same propositional letter  : $p$, and only this one. 
+
+\paragraph{Forth} Let $n\in\mathbb{N}$. We have $w\ Z\ w^n$. The only successor of $w$ in the first Kripke model is $v$ : $w\ R_{a1}\ v$. We also have $w^n\ R_{a2}\ v^n$. And by definition of $Z$, $v\ Z\ v^n$.
+
+Let $n\in\mathbb{N}$. We have $v\ Z\ v^n$. The only successor of $v$ in the first Kripke model is $w$ : $v\ R_{b1}\ w$. We also have $v^n\ R_{b2}\ w^{n+1}$. And by definition of $Z$, $w\ Z\ v^{n+1}$.
+
+Thus, the \textit{Forth} rule is true for $Z$, as every pair in relation with $Z$ is either $w\ Z\ w^n$ or $v\ Z\ v^n$ by definition.
+
+\paragraph{Back} Let $n\in\mathbb{N}$. We have $w\ Z\ w^n$. The only successor of $w^n$ in the first Kripke model is $v^n$. We also have $w\ R_{a1}\ v$ and $v\ Z\ v^n$. 
+
+ Let $n\in\mathbb{N}$. We have $v\ Z\ v^n$. The only successor of $v^n$ in the first Kripke model is $w^{n+1}$. We also have $v\ R_{b1}\ w$ and $w\ Z\ w^{n+1}$. 
+
+\paragraph{Conclusion} $Z$ is a non-empty bisimulation between the two Kripke models. The two Kripke models are thus bisimilar.
 
 \end{document}
