@@ -11,7 +11,7 @@
 \date{February 3, 2017}
 
 \def\exercise#1{\Large\textbf{Exercise #1}\normalsize\\}
-\def\question#1{\textbf{Question #1:}\quad}
+\def\question#1{\vspace{1cm}\\\textbf{Question #1:}\quad}
 
 
 \begin{document}
@@ -27,7 +27,7 @@ $$\left\{
 \begin{array}{l}
 \forall n\in\mathbb{N},\quad w\ Z\ w^n \\
 \forall n\in\mathbb{N},\quad v\ Z\ v^n
-\end{array}
+\end{array} 
 \right.$$
 
 Let's show that the relation $Z$ is a bisimulation.
@@ -52,6 +52,28 @@ The Kripke model with only one world in which the propositional letter $t$ is tr
 
 We then define $Z$ the bisimulation such that $9\ Z\ w$. $Z$ is a bisimulation : in both $9$ and $w$, only $t$ is true, and both $9$ and $w$ have no successors. And this Kripke model is the smallest possible as it only has one world.
 
-The Kripke contraction is thus $(\{w\},\emptyset,V)$ such that $V(w)=\mathit{true}$.
+The Kripke contraction is thus $(\{w\},\emptyset,V)$ such that $V(w,t)=\mathit{true}$.
+
+
+\question{3}
+
+\paragraph{Union of two bisimulations} We will first prove that the union of two bisimulations is a bisimulation.
+Let $Z_1$ and $Z_2$ be two bisimulations between $\mathcal{M}$ and $\mathcal{M}^'$. Let $Z=Z_1\cup Z_2$.
+
+\textit{Atom} is true for $Z$. Indeed, whenever $w\ Z\ v$, either $w\ Z_1\ v$ or $w\ Z_2\ v$. In each case, we have that $w$ and $v$ make true the same propositional letters because $Z_1$ and $Z_2$ are bisimulations.
+
+\textit{Forth} is true for $Z$. Consider the case where $w\ Z_1\ v$ (the case with $Z_2$ is the same). In that case, forall $w'$ such that $w\ R\ w'$, there exists some $v'$ such that $v\ R\ v'$ and $w'\ Z_1\ v'$. Then by definition of $Z$, we also have $w'\ Z\ v'$.
+\textit{Back} is also true for $Z$ : the proof is symmetrical.
+
+Thus, $Z$ is a bisimulation between $\mathcal{M}$ and $\mathcal{M}^'$.
+
+\paragraph{Finite number of bisimulations} Then, we show that between two finite Kripke frames, there exists only a finite number of bisimulation. Indeed, a bisimulation is included in the set $\mathcal{W}^\mathcal{M}\times\mathcal{W}^\mathcal{M'}$, which is finite.
+
+\paragraph{Union of bisimulations} We can now deduce that any non-empty union of bisimulations is a bissimulation recursively on the number of bisimulations in the collection. Since this number is finite, and because the union of two bisimulations is one too, then we have that the union of the whole collection is a bisimulation as well.
+
+\paragraph{Maximal bisimulation} Let $Z_m = \cup_{X \mathit{bisimulation}} X$. The union is finite because there only is a finite number of bisimulation. There is always at least one bisimulation between two Kripke models : $\emptyset$. We can thus apply the previous result and deduce that $Z_m$ is a bisimulation. Moreover, for each bisimulation $X$, by definition of $Z_m$, we have $X\subseteq Z_m$. Thus, $Z_m$ is a maximal bisimulation.
+
+
+
 
 \end{document}
