@@ -190,6 +190,35 @@ Thus, $Z$ is a bisimulation between $\mathcal{M}$ and $\mathcal{M}'$.
 \question{1}
 \paragraph{Tableau method}
 
+See the tableau method in Annex (TODO : ANNEX).
+
+TODO : proofs with Hilbert System
+
+\question{2}
+%To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} in which the formula is not true.
+
+\question{3}
+Let $\mathcal{M}$ be a transitive and reflexive Kripke model.
+Let $w$ be a world in $\mathcal{M}$, such that $\mathcal{M},w\models\Box\Diamond\Box\Diamond\varphi$.
+
+Then, forall $w_1$ such that $w\ R\ w$, there exists some $w_2$ such that $w_1\ R\ w_2$ and forall $w_3$ such that $w_2\ R\ w_3$, there exists $w_4$ such that $w_3\ R\ w_4$ and $w_4\models\varphi$.
+
+Let $v_1$ be a successor of $w$ in $\mathcal{M}$. By assumption, there exists some $w_2$, such that $v1\ R\ w_2$, and $w_2\models\Box\Diamond\varphi$. 
+Let $w_3$ be a successor of $w_2$. $w_3$ exists because $\mathcal{M}$ is reflexive.
+By assumption, there exists some $w_4$ such that $w_4\models\varphi$ and $w_3\ R\ w_4$.
+
+By transitivity of $\matcal{M}$, we also have $v_1\ R\ w_4$, because $v_1\ R\ w_2$ and $w_2\ R\ w_3$ and $w_3\ R\ w_4$.
+
+Thus, for each successor $v_1$ of $w$, we can find a successor of $v_1$ that satisfies $\varphi$.
+
+Thus, $\mathcal{M},w\models\Box\Diamond\varphi$.
+
+Finally, we have that in a relfexive and transitive Kripke model,
+$$\Box\Diamond\Box\Diamond\varphi\rightarrow\Box\Diamond\varphi$$.
+
+
+
+\newpage
 \tableau
 \tabdeux
 \end{document}
