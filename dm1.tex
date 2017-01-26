@@ -216,6 +216,21 @@ Thus, $\mathcal{M},w\models\Box\Diamond\varphi$.
 Finally, we have that in a relfexive and transitive Kripke model,
 $$\Box\Diamond\Box\Diamond\varphi\rightarrow\Box\Diamond\varphi$$.
 
+\exercise{3}
+Let $p$ be a propositional letter.
+Assume that there exists some $\varphi$, such that for all pointed Kripke model $(\mathcal{M},w)$, we have $\mathcal{M},w\models\varphi\leftrightarrow\mathcal{M},w\models D_p$.
+
+$\varphi$ cannot be true in any pointed Kripke model. Indeed, it would mean that $D_p$ is also true in every pointed Kripke model which is impossible : consider the Kripke model with only one world where $p$ is false.
+
+Thus, there exists at least one pointed Kripke model $\mathcal{M},w$ such that $\mathcal{M},w\models\neg\varphi$ and thus $\mathcal{M},w\models\neg D_p$.
+Let $\mathcal{M}' = (W^\mathcal{M}\cup\{w_p\}, R^\mathcal{M}, V^\mathcal{M}[V(w_p,p)=\mathit{true}])$, in which $w_p$ is a new world added to $\mathcal{M}$ where $p$ is true.
+
+We have $\mathcal{M}',w\models D_p$ by definition of $D_p$, because $\mathcal{M}',w_p\models p$.
+But $\mathcal{M}',w\models\neg\varphi$, because $\mathcal{M},w\models\neg\varphi$, and adding a world not connected in any way to $w$ cannot change the valuation of $\varphi$ for $w$.
+
+Let's show more that last point more formally. TODO.
+
+Thus we have shown that one cannot define a Modal Logic formula that expresses the difference operator for a propositional letter (and therefore the difference operator cannot be defined for every formula).
 
 
 \newpage
