@@ -20,7 +20,8 @@
 \def\exercise#1{\ \vspace{1cm}\\\Large\textbf{Exercise #1}\normalsize\\}
 \def\question#1{\ \vspace{1cm}\\\textbf{Question #1:}\quad}
 \def\tilde{\raise.17ex\hbox{$\scriptstyle\sim$}}
-
+\def\M{\mathcal{M}}
+\def\tphi{^{\tilde\varphi}}
 
 \def\tableau{
   \begin{figure}
@@ -48,7 +49,7 @@
       \node[] (8) [below left=of 7] {\begin{tabular}{c}$l'\quad\neg p$\\Contradictory\end{tabular}};
       \node[] (9) [below right=of 7] {\begin{tabular}{c}$l'\quad\neg q$\\Contradictory\end{tabular}};
 
-      \path (1) edge [above] node {} (2)
+      \path (1) edge [] node {} (2)
       (2) edge [] node {} (3)
       (3) edge [] node {} (4)
       (4) edge [] node {} (5)
@@ -95,13 +96,13 @@
       \node[] (13) [below left=of 12] {$l\quad\Diamond p$};
       \node[] (14) [below=of 13] {\begin{tabular}{c}$R\ l\ l'$\\$l'\quad p$\end{tabular}};
       \node[] (15) [below=of 14] {$l'\quad\neg p\wedge\neg q$};
-      \node[] (16) [below=of 15] {\begin{tabular}$l'\quad\neg p$\\Contradictory\end{tabular}};
+      \node[] (16) [below=of 15] {\begin{tabular}{c}$l'\quad\neg p$\\Contradictory\end{tabular}};
       \node[] (17) [below right=of 12] {$l\quad\Diamond q$};
       \node[] (18) [below=of 17] {\begin{tabular}{c}$R\ l\ l'$\\$l'\quad q$\end{tabular}};
       \node[] (19) [below=of 18] {$l'\quad\neg p\wedge\neg q$};
-      \node[] (20) [below=of 19] {\begin{tabular}$l'\quad\neg q$\\Contradictory\end{tabular}};
+      \node[] (20) [below=of 19] {\begin{tabular}{c}$l'\quad\neg q$\\Contradictory\end{tabular}};
 
-      \path (1) edge [above] node {} (2)
+      \path (1) edge [] node {} (2)
       (2) edge [] node {} (3)
       (3) edge [] node {} (4)
       (4) edge [] node {} (5)
@@ -221,9 +222,9 @@ Thus, the \textit{Forth} rule is true for $Z$, as every pair in relation with $Z
 \paragraph{Conclusion} $Z$ is a non-empty bisimulation between the two Kripke models. The two Kripke models are thus bisimilar.
 
 
-\question{2} The smallest Kripke model bisimilar to $\mathcal{M}$ must have at least one world, for the bisimulation to be non-empty.
+\question{2} The smallest Kripke model bisimilar to $\M$ must have at least one world, for the bisimulation to be non-empty.
 
-The Kripke model with only one world in which the propositional letter $t$ is true is bisimilar to $\mathcal{M}$. Let $w$ be this world.
+The Kripke model with only one world in which the propositional letter $t$ is true is bisimilar to $\M$. Let $w$ be this world.
 
 We then define $Z$ the bisimulation such that $9\ Z\ w$. $Z$ is a bisimulation : in both $9$ and $w$, only $t$ is true, and both $9$ and $w$ have no successors. And this Kripke model is the smallest possible as it only has one world.
 
@@ -233,16 +234,16 @@ The Kripke contraction is thus $(\{w\},\emptyset,V)$ such that $V(w,t)=\mathit{t
 \question{3}
 
 \paragraph{Union of two bisimulations} We will first prove that the union of two bisimulations is a bisimulation.
-Let $Z_1$ and $Z_2$ be two bisimulations between $\mathcal{M}$ and $\mathcal{M}'$. Let $Z=Z_1\cup Z_2$.
+Let $Z_1$ and $Z_2$ be two bisimulations between $\M$ and $\M'$. Let $Z=Z_1\cup Z_2$.
 
 \textit{Atom} is true for $Z$. Indeed, whenever $w\ Z\ v$, either $w\ Z_1\ v$ or $w\ Z_2\ v$. In each case, we have that $w$ and $v$ make true the same propositional letters because $Z_1$ and $Z_2$ are bisimulations.
 
 \textit{Forth} is true for $Z$. Consider the case where $w\ Z_1\ v$ (the case with $Z_2$ is the same). In that case, forall $w'$ such that $w\ R\ w'$, there exists some $v'$ such that $v\ R\ v'$ and $w'\ Z_1\ v'$. Then by definition of $Z$, we also have $w'\ Z\ v'$.
 \textit{Back} is also true for $Z$ : the proof is symmetrical.
 
-Thus, $Z$ is a bisimulation between $\mathcal{M}$ and $\mathcal{M}'$.
+Thus, $Z$ is a bisimulation between $\M$ and $\M'$.
 
-\paragraph{Finite number of bisimulations} Then, we show that between two finite Kripke frames, there exists only a finite number of bisimulation. Indeed, a bisimulation is included in the set $\mathcal{W}^\mathcal{M}\times\mathcal{W}^\mathcal{M'}$, which is finite.
+\paragraph{Finite number of bisimulations} Then, we show that between two finite Kripke frames, there exists only a finite number of bisimulation. Indeed, a bisimulation is included in the set $\mathcal{W}^\M\times\mathcal{W}^{\M'}$, which is finite.
 
 \paragraph{Union of bisimulations} We can now deduce that any non-empty union of bisimulations is a bissimulation recursively on the number of bisimulations in the collection. Since this number is finite, and because the union of two bisimulations is one too, then we have that the union of the whole collection is a bisimulation as well.
 
@@ -260,35 +261,35 @@ See the tableau method and hilbert proofs in Annex (TODO : ANNEX).
 %To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} in which the formula is not true.
 
 \question{3}
-Let $\mathcal{M}$ be a transitive and reflexive Kripke model.
-Let $w$ be a world in $\mathcal{M}$, such that $\mathcal{M},w\models\Box\Diamond\Box\Diamond\varphi$.
+Let $\M$ be a transitive and reflexive Kripke model.
+Let $w$ be a world in $\M$, such that $\M,w\models\Box\Diamond\Box\Diamond\varphi$.
 
 Then, forall $w_1$ such that $w\ R\ w$, there exists some $w_2$ such that $w_1\ R\ w_2$ and forall $w_3$ such that $w_2\ R\ w_3$, there exists $w_4$ such that $w_3\ R\ w_4$ and $w_4\models\varphi$.
 
-Let $v_1$ be a successor of $w$ in $\mathcal{M}$. By assumption, there exists some $w_2$, such that $v1\ R\ w_2$, and $w_2\models\Box\Diamond\varphi$. 
-Let $w_3$ be a successor of $w_2$. $w_3$ exists because $\mathcal{M}$ is reflexive.
+Let $v_1$ be a successor of $w$ in $\M$. By assumption, there exists some $w_2$, such that $v1\ R\ w_2$, and $w_2\models\Box\Diamond\varphi$. 
+Let $w_3$ be a successor of $w_2$. $w_3$ exists because $\M$ is reflexive.
 By assumption, there exists some $w_4$ such that $w_4\models\varphi$ and $w_3\ R\ w_4$.
 
-By transitivity of $\matcal{M}$, we also have $v_1\ R\ w_4$, because $v_1\ R\ w_2$ and $w_2\ R\ w_3$ and $w_3\ R\ w_4$.
+By transitivity of $\M$, we also have $v_1\ R\ w_4$, because $v_1\ R\ w_2$ and $w_2\ R\ w_3$ and $w_3\ R\ w_4$.
 
 Thus, for each successor $v_1$ of $w$, we can find a successor of $v_1$ that satisfies $\varphi$.
 
-Thus, $\mathcal{M},w\models\Box\Diamond\varphi$.
+Thus, $\M,w\models\Box\Diamond\varphi$.
 
 Finally, we have that in a relfexive and transitive Kripke model,
 $$\Box\Diamond\Box\Diamond\varphi\rightarrow\Box\Diamond\varphi$$.
 
 \exercise{3}
 Let $p$ be a propositional letter.
-Assume that there exists some $\varphi$, such that for all pointed Kripke model $(\mathcal{M},w)$, we have $\mathcal{M},w\models\varphi\leftrightarrow\mathcal{M},w\models D_p$.
+Assume that there exists some $\varphi$, such that for all pointed Kripke model $(\M,w)$, we have $\M,w\models\varphi\leftrightarrow\M,w\models D_p$.
 
 $\varphi$ cannot be true in any pointed Kripke model. Indeed, it would mean that $D_p$ is also true in every pointed Kripke model which is impossible : consider the Kripke model with only one world where $p$ is false.
 
-Thus, there exists at least one pointed Kripke model $\mathcal{M},w$ such that $\mathcal{M},w\models\neg\varphi$ and thus $\mathcal{M},w\models\neg D_p$.
-Let $\mathcal{M}' = (W^\mathcal{M}\cup\{w_p\}, R^\mathcal{M}, V^\mathcal{M}[V(w_p,p)=\mathit{true}])$, in which $w_p$ is a new world added to $\mathcal{M}$ where $p$ is true.
+Thus, there exists at least one pointed Kripke model $\M,w$ such that $\M,w\models\neg\varphi$ and thus $\M,w\models\neg D_p$.
+Let $\M' = (W^\M\cup\{w_p\}, R^\M, V^\M[V(w_p,p)=\mathit{true}])$, in which $w_p$ is a new world added to $\M$ where $p$ is true.
 
-We have $\mathcal{M}',w\models D_p$ by definition of $D_p$, because $\mathcal{M}',w_p\models p$.
-But $\mathcal{M}',w\models\neg\varphi$, because $\mathcal{M},w\models\neg\varphi$, and adding a world not connected in any way to $w$ cannot change the valuation of $\varphi$ for $w$.
+We have $\M',w\models D_p$ by definition of $D_p$, because $\M',w_p\models p$.
+But $\M',w\models\neg\varphi$, because $\M,w\models\neg\varphi$, and adding a world not connected in any way to $w$ cannot change the valuation of $\varphi$ for $w$.
 
 Let's show more that last point more formally. TODO.
 
@@ -296,13 +297,13 @@ Thus we have shown that one cannot define a Modal Logic formula that expresses t
 
 \exercise{4}
 \question{1}
-Let us define a transitive Kripke model $\mathcal{M}$ and a formula $\varphi$, such that $\mathcal{M}^{\tilde\varphi}$ isn't transitive.
+Let us define a transitive Kripke model $\M$ and a formula $\varphi$, such that $\M\tphi$ isn't transitive.
 
-Let $\mathcal{M} = (W,R,V)$ such that $W=\{x,y_1,y_2,z\}$, $R = \{(x,y_1),(y_2,z)\}$ and $V(x)=p$, $V(y_1)=V(y_2)=q$ and $V(z)=r$. Let $\varphi=p\wedge q\wedge r$.
+Let $\M = (W,R,V)$ such that $W=\{x,y_1,y_2,z\}$, $R = \{(x,y_1),(y_2,z)\}$ and $V(x)=p$, $V(y_1)=V(y_2)=q$ and $V(z)=r$. Let $\varphi=p\wedge q\wedge r$.
 
-In  $\mathcal{M}^{\tilde\varphi}$, there are 3 worlds : $x^{\tilde\varphi}=\{x\}$, $y_1^{\tilde\varphi}=\{y_1,y_2\}$ and $z^{\tilde\varphi}=\{z\}$.
+In  $\M\tphi$, there are 3 worlds : $x\tphi=\{x\}$, $y_1\tphi=\{y_1,y_2\}$ and $z\tphi=\{z\}$.
 
-We also have $x^{\tilde\varphi}\ R^{\tilde\varphi}\ y_1^{\tilde\varphi}$ and $y_1^{\tilde\varphi}\ R^{\tilde\varphi}\ z^{\tilde\varphi}$, but we don't have $x^{\tilde\varphi}\ R^{\tilde\varphi}\ z^{\tilde\varphi}$, which means that $\mathcal{M}^{\tilde\varphi}$ isn't transitive.
+We also have $x\tphi\ R\tphi\ y_1\tphi$ and $y_1\tphi\ R\tphi\ z\tphi$, but we don't have $x\tphi\ R\tphi\ z\tphi$, which means that $\M\tphi$ isn't transitive.
 
 We thus deduce that not every filtration of a transitive Kripke model is transitive.
 
