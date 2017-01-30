@@ -125,6 +125,68 @@
   \end{figure}
 }
 
+\def\hilbert{
+\begin{tabular}{l l l}
+1 & $\Box(p\rightarrow\neg q)\rightarrow(\Box p\rightarrow\Box\neg q)$ & Modal distributivity\\
+2 & $\neg\neg\Box(p\rightarrow\neg q)\rightarrow\neg\neg(\Box p\rightarrow\Box\neg q)$ & Rewriting 1\\
+3 & $(\neg\neg\Box(p\rightarrow\neg q)\rightarrow\neg\neg(\Box p\rightarrow\Box\neg q))\rightarrow(\neg(\Box p\rightarrow\Box\neg q)\rightarrow(\neg\Box(p\rightarrow\neg q)))$ & Axiom 3\\
+4 & $\neg(\Box p\rightarrow\Box\neg q)\rightarrow(\neg\Box(p\rightarrow\neg q))$ & Modus Ponens on 2,3\\
+5 & $(\Diamond q\vee\Box p)\rightarrow\Diamond(p\vee q)$ & Rewriting the $\neg$ in 4 
+\end{tabular}
+}
+
+\def\hilbertdeux{
+We will prove the two implications separately.
+
+\paragraph{First lemma:} $\Box(\varphi\wedge\psi)\rightarrow(\Box\varphi\wedge\Box\psi)$
+
+\begin{tabular}{l l l}
+1 & $\varphi\wedge\psi\rightarrow\varphi$ & (PL3)\\
+2 & $\Box(\varphi\wedge\psi\rightarrow\varphi)$ & Necessitation with 1\\
+3 & $\Box((\varphi\wedge\psi)\rightarrow\varphi)\rightarrow(\Box(\varphi\wedge\psi)\rightarrow\Box\varphi)$ & Modal distributivity\\
+4 & $\Box(\varphi\wedge\psi)\rightarrow\Box\varphi$ & Modus Ponens on 2,3\\
+5 & $\varphi\wedge\psi\rightarrow\psi$ & (PL3)\\
+6 & $\Box(\varphi\wedge\psi\rightarrow\psi)$ & Necessitation with 5\\
+7 & $\Box((\varphi\wedge\psi)\rightarrow\psi)\rightarrow(\Box(\varphi\wedge\psi)\rightarrow\Box\psi)$ & Modal distributivity\\
+8 & $\Box(\varphi\wedge\psi)\rightarrow\Box\psi$ & Modus Ponens on 6,7\\
+9 & $((\Box(\varphi\wedge\psi)\rightarrow\Box\varphi)\wedge(\Box(\varphi\wedge\psi)\rightarrow\Box\psi))\rightarrow(\Box(\varphi\wedge\psi)\rightarrow(\Box\varphi\wedge\Box\psi))$ & (PL1)\\
+10 & $\Box(\varphi\wedge\psi)\rightarrow(\Box\varphi\wedge\Box\psi)$ & Modus Ponens on 4,8,9
+\end{tabular}
+
+\paragraph{First implication:} $\Diamond p\vee\Diamond q\rightarrow\Diamond(p\vee q)$
+
+\begin{tabular}{l l l}
+1 & $\Box(\neg p\wedge\neg q)\rightarrow(\Box\neg p\wedge\Box\neg q)$ & By the previous lemma\\
+2 & $\neg\neg\Box(\neg p\wedge\neg q)\rightarrow\neg\neg(\Box\neg p\wedge\Box\neg q)$ & Rewriting 1\\
+3 & $(\neg\neg\Box(\neg p\wedge\neg q)\rightarrow\neg\neg(\Box\neg p\wedge\Box\neg q)) \rightarrow (\neg(\Box\neg p\wedge\Box\neg q)\rightarrow\neg\Box(\neg p\wedge\neg q))$ & Axiom 3\\
+4 & $\neg(\Box\neg p\wedge\Box\neg q)\rightarrow\neg\Box(\neg p\wedge\neg q)$ & Modus Ponens on 2,3\\
+5 & $\Diamond p\vee\Diamond q\rightarrow\Diamond(p\vee q)$ & Rewriting $\neg$ in 4
+\end{tabular}
+
+\paragraph{Second lemma:} $\Box\varphi\wedge\Box\psi\rightarrow\Box(\varphi\wedge\psi)$
+
+\begin{tabular}{l l l}
+1 & $\varphi\rightarrow(\psi\rightarrow(\varphi\wedge\psi))$ & (PL2)\\
+2 & $\Box(\varphi\rightarrow(\psi\rightarrow(\varphi\wedge\psi)))$ & Necessitation\\
+3 & $\Box(\varphi\rightarrow(\psi\rightarrow(\varphi\wedge\psi)))\rightarrow(\Box\varphi\rightarrow\Box(\psi\rightarrow(\varphi\wedge\psi)))$ & Modal distributivity\\
+4 & $\Box\varphi\rightarrow\Box(\psi\rightarrow(\varphi\wedge\psi))$ & Modus Ponens on 2,3\\
+5 & $(\Box\varphi\rightarrow\Box(\psi\rightarrow(\varphi\wedge\psi)))\rightarrow(\Box\varphi\rightarrow(\Box\psi\rightarrow(\Box(\varphi\wedge\psi))))$ & Modal distributivity and Modus Ponens\\
+6 & $\Box\varphi\rightarrow(\Box\psi\rightarrow(\Box(\varphi\wedge\psi)))$ & Modus Ponens on 4,5\\
+7 & $\Box\varphi\wedge\Box\psi\rightarrow\Box(\varphi\wedge\psi)$ & Modus Ponens on 6 and (PL5)
+\end{tabular}
+
+\paragraph{Second implication:} $\Diamond (p\vee q)\rightarrow\Diamond p\vee\Diamond q$
+
+\begin{tabular}{l l l}
+1 & $(\Box\neg p\wedge\Box\neg q) \rightarrow\Box(\neg p\wedge\neg q)$ & By the previous lemma\\
+2 & $\neg\neg(\Box\neg p\wedge\Box\neg q) \rightarrow\neg\neg\Box(\neg p\wedge\neg q)$ & Rewriting 1\\
+3 & $(\neg\neg(\Box\neg p\wedge\Box\neg q) \rightarrow\neg\neg\Box(\neg p\wedge\neg q)) \rightarrow (\neg\Box(\neg p\wedge\neg q)\rightarrow\neg(\Box\neg p\wedge\Box\neg q))$ & Axiom 3\\
+4 & $\neg\Box(\neg p\wedge\neg q)\rightarrow\neg(\Box\neg p\wedge\Box\neg q)$ & Modus Ponens on 2,3\\
+5 & $\Diamond (p\vee q)\rightarrow\Diamond p\vee\Diamond q$ & Rewriting $\neg$ in 4
+\end{tabular}
+
+}
+
 \begin{document}
 \maketitle
 
@@ -188,11 +250,9 @@ Thus, $Z$ is a bisimulation between $\mathcal{M}$ and $\mathcal{M}'$.
 
 \exercise{2}
 \question{1}
-\paragraph{Tableau method}
+See the tableau method and hilbert proofs in Annex (TODO : ANNEX).
 
-See the tableau method in Annex (TODO : ANNEX).
 
-TODO : proofs with Hilbert System
 
 \question{2}
 %To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} in which the formula is not true.
@@ -234,6 +294,15 @@ Thus we have shown that one cannot define a Modal Logic formula that expresses t
 
 
 \newpage
+
 \tableau
 \tabdeux
+
+\question{1.1}
+
+\hilbert
+
+\question{1.2}
+
+\hilbertdeux
 \end{document}
