@@ -264,6 +264,8 @@ We define $\M=(\{w,x\},R,V)$ where $w\ R\ w$, $x\ R\ x$ and $w\ R\ x$. $V$ is su
 
 As \textbf{S4} is sound for models with a reflexive and transitive relation, the formula is unprovable.
 
+TODO : add schema
+
 \paragraph{Proof in \textbf{S5}} 
 
 \begin{tabular}{l l l}
@@ -311,6 +313,8 @@ Let's show more that last point more formally. TODO.
 
 Thus we have shown that one cannot define a Modal Logic formula that expresses the difference operator for a propositional letter (and therefore the difference operator cannot be defined for every formula).
 
+TODO : use bisimulation
+
 \exercise{4}
 \question{1}
 Let us define a transitive Kripke model $\M$ and a formula $\varphi$, such that $\M\tphi$ isn't transitive.
@@ -326,6 +330,20 @@ We thus deduce that not every filtration of a transitive Kripke model is transit
 TODO: schema?
 
 \question{2}
+Let $\M$ be a transitive Kripke model. Let's show that, using the new relation, $\M\tphi$ is transitive.
+
+Let $x\tphi, y\tphi$ and $z\tphi$ $\in W\tphi$ such that $x\tphi\ R\tphi\ y\tphi$ and $y\tphi\ R\tphi\ z\tphi$. If no such worlds exists, then $\M\tphi$ is trivially transitive. Let us show that $x\tphi\ R\tphi\ z\tphi$ which would mean that $\M\tphi$ is transitive.
+
+As we have $x\tphi\ R\tphi\ y\tphi$, then forall $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$, if $\M,y\models\psi\vee\Diamond\psi$ then $\M,x\models\Diamond\psi$ by definition of the new relation of $\M\tphi$. (1)
+
+We also have $y\tphi\ R\tphi\ z\tphi$, then forall $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$, if $\M,z\models\psi\vee\Diamond\psi$ then $\M,y\models\Diamond\psi$. (2)
+
+To show that $x\tphi\ R\tphi\ z\tphi$, let us take $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$ and $\M,z\models\psi\vee\Diamond\psi$. If no such $\psi$ exists, then we trivially have $x\tphi\ R\tphi\ z\tphi$. Let us show $\M,x\models\Diamond\psi$.
+
+Using (2), we have that $\M,y\models\Diamond\psi$. Then we have $\M,y\models\psi\vee\Diamond\psi$ by defnitiion of $\models$. Then using (1), we deduce that $\M,x\models\Diamond\psi$. We thus have $x\tphi\ R\tphi\ z\tphi$.
+
+Then, we have shown that $\M\tphi$ is transitive. We deduce that any filtration of a transitive model is transitive using this relation. As we did not use the transitivity of $\M$ in our proof, we can also deduce that the filtration with the new relation of any Kripke model is transitive.
+
 \newpage
 
 \tableau
