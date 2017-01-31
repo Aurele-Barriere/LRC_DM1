@@ -258,7 +258,23 @@ See the tableau method and hilbert proofs in Annex (TODO : ANNEX).
 
 
 \question{2}
-%To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} in which the formula is not true.
+\paragraph{Unprovability in \textbf{S4}} To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} (reflexivity and transitivity) in which the formula is not true. We then conclude with the soundness of the deductive system that, if the formula were provable, then it would hold in our exemple.
+
+We define $\M=(\{w,x\},R,V)$ where $w\ R\ w$, $x\ R\ x$ and $w\ R\ x$. $V$ is such that $V(x,p)=\mathit{true}$ and $V(w,p)=\mathit{false}$. $\M$ is transitive and reflexive. We have that $\M,w\not\models p\rightarrow\Box\Diamond p$, as $\M,w\models p$ but $\M,x\not\models\Diamond p$.
+
+As \textbf{S4} is sound for models with a reflexive and transitive relation, the formula is unprovable.
+
+\paragraph{Proof in \textbf{S5}} 
+
+\begin{tabular}{l l l}
+1 & $p\rightarrow\Diamond p$ & Reflexivity Axiom\\
+2 & $\Diamond p\rightarrow\Box\Diamond p$ & S5 Axiom\\
+3 & $p\rightarrow\Box\Diamond p$ & $(i)$ on 1,2\\
+\end{tabular}
+
+We still need to prove $(i)$ : $\frac{P\rightarrow Q\quad Q\rightarrow R}{P\rightarrow R}$.
+
+TODO : prove $(i)$
 
 \question{3}
 Let $\M$ be a transitive and reflexive Kripke model.
