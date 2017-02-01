@@ -12,6 +12,7 @@
 \usepackage[justification=centering]{caption}
 \usetikzlibrary{positioning,shapes}
 \usepackage{fullpage}
+\usepackage{float}
 
 \author{Aur\`ele Barri\`ere}
 \title{LRC DM 1}
@@ -24,7 +25,7 @@
 \def\tphi{^{\tilde\varphi}}
 
 \def\tableau{
-  \begin{figure}
+  \begin{figure}[H]%
     \centering
     \begin{tikzpicture}[%
         ->,
@@ -65,7 +66,7 @@
 
 
 \def\tabdeux{
-  \begin{figure}
+  \begin{figure}[H]%
     \scriptsize
     \centering
     \begin{tikzpicture}[%
@@ -218,7 +219,7 @@ We will prove the two implications separately.
 }
 
 \def\nottransitive{
-  \begin{figure}
+  \begin{figure} 
     \centering
     \begin{tikzpicture}[%
         ->,
@@ -332,7 +333,19 @@ Thus, $Z$ is a bisimulation between $\M$ and $\M'$.
 
 \exercise{2}
 \question{1}
-See the tableau method and hilbert proofs in Annex (TODO : ANNEX).
+We present a proof using the tableau method and another one in the Hilbert system for each formula.
+
+\question{1.1}
+
+\tableau
+
+\hilbert
+
+\question{1.2}
+
+\tabdeux
+
+\hilbertdeux
 
 
 
@@ -423,16 +436,10 @@ Using (2), we have that $\M,y\models\Diamond\psi$. Then we have $\M,y\models\psi
 
 Then, we have shown that $\M\tphi$ is transitive. We deduce that any filtration of a transitive model is transitive using this relation. As we did not use the transitivity of $\M$ in our proof, we can also deduce that the filtration with the new relation of any Kripke model is transitive.
 
-\newpage
+\exercise{5}
+\question{1}
+\question{2}
+\question{3}
 
-\tableau
-\tabdeux
 
-\question{1.1}
-
-\hilbert
-
-\question{1.2}
-
-\hilbertdeux
 \end{document}
