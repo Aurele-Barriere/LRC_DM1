@@ -190,6 +190,85 @@ We will prove the two implications separately.
 
 }
 
+\def\counterexample{
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}[%
+        ->,
+        shorten >=2pt,
+        %>=stealth,
+        node distance=0.4cm,
+        noname/.style={%
+          ellipse,
+          minimum width=5em,
+          minimum height=3em,
+          draw
+          ,thick,scale=0.4, every node/.style={transform shape}
+        }
+      ]
+      \node[circle,draw] (1) {$w\quad\ p$};
+      \node[circle,draw] (2) [below=of 1] {$x\quad\neg p$};
+      \path (1) edge [] node {} (2)
+      (2) edge [loop below] node {} (2)
+      (1) edge [loop above] node {} (1);
+  \end{tikzpicture}%
+    \caption{Exercise 2 question 2: An example where the formula $p\rightarrow\Box\Diamond p$ isn't true}
+    \label{2.2}
+  \end{figure}
+}
+
+\def\nottransitive{
+  \begin{figure}
+    \centering
+    \begin{tikzpicture}[%
+        ->,
+        shorten >=2pt,
+        %>=stealth,
+        node distance=0.4cm,
+        noname/.style={%
+          ellipse,
+          minimum width=5em,
+          minimum height=3em,
+          draw
+          ,thick,scale=0.4, every node/.style={transform shape}
+        }
+      ]
+      \node[circle,draw] (1) {$x\quad\ p$};
+      \node[circle,draw] (2) [below=of 1] {$y_1\quad q$};
+      \node[circle,draw] (3) [right=of 2] {$y_2\quad q$};
+      \node[circle,draw] (4) [below=of 3] {$z\quad r$};
+      \path (1) edge [] node {} (2)
+      (3) edge [] node {} (4);
+  \end{tikzpicture}%
+ \hspace{3cm}
+    \begin{tikzpicture}[%
+        ->,
+        shorten >=2pt,
+        %>=stealth,
+        node distance=0.4cm,
+        noname/.style={%
+          ellipse,
+          minimum width=5em,
+          minimum height=3em,
+          draw
+          ,thick,scale=0.4, every node/.style={transform shape}
+        }
+      ]
+      \node[circle,draw] (1) {$x\tphi\quad\ p$};
+      \node[circle,draw] (2) [below=of 1] {$y\tphi\quad q$};
+      \node[circle,draw] (3) [below=of 2] {$z\tphi\quad r$};
+      \path (1) edge [] node {} (2)
+      (2) edge [] node {} (3);
+  \end{tikzpicture}%
+    \caption{Exercise 4: Not every filtration of a transitive model is transitive}
+    \label{4}
+  \end{figure}
+}
+
+
+
+
+
 \begin{document}
 \maketitle
 
@@ -247,7 +326,7 @@ Thus, $Z$ is a bisimulation between $\M$ and $\M'$.
 
 \paragraph{Union of bisimulations} We can now deduce that any non-empty union of bisimulations is a bissimulation recursively on the number of bisimulations in the collection. Since this number is finite, and because the union of two bisimulations is one too, then we have that the union of the whole collection is a bisimulation as well.
 
-\paragraph{Maximal bisimulation} Let $Z_m = \underset{X \mathit{bisimulation}}{\bigcup} X$. The union is finite because there only is a finite number of bisimulation. There is always at least one bisimulation between two Kripke models : $\emptyset$. We can thus apply the previous result and deduce that $Z_m$ is a bisimulation. Moreover, for each bisimulation $X$, by definition of $Z_m$, we have $X\subseteq Z_m$. Thus, $Z_m$ is a maximal bisimulation.
+\paragraph{Maximal bisimulation} Let $Z_m = \underset{X \mathit{bisimulation}}{\bigcup} X$. The union is finite because there only is a finite number of bisimulations. There is always at least one bisimulation between two Kripke models : $\emptyset$. We can thus apply the previous result and deduce that $Z_m$ is a bisimulation. Moreover, for each bisimulation $X$, by definition of $Z_m$, we have $X\subseteq Z_m$. Thus, $Z_m$ is a maximal bisimulation.
 
 
 
@@ -258,13 +337,13 @@ See the tableau method and hilbert proofs in Annex (TODO : ANNEX).
 
 
 \question{2}
-\paragraph{Unprovability in \textbf{S4}} To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} (reflexivity and transitivity) in which the formula is not true. We then conclude with the soundness of the deductive system that, if the formula were provable, then it would hold in our exemple.
+\paragraph{Unprovability in \textbf{S4}} To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} (reflexivity and transitivity) in which the formula is not true. We then conclude with the soundness of the deductive system that, if the formula was provable, then it would hold in our exemple.
 
-We define $\M=(\{w,x\},R,V)$ where $w\ R\ w$, $x\ R\ x$ and $w\ R\ x$. $V$ is such that $V(x,p)=\mathit{true}$ and $V(w,p)=\mathit{false}$. $\M$ is transitive and reflexive. We have that $\M,w\not\models p\rightarrow\Box\Diamond p$, as $\M,w\models p$ but $\M,x\not\models\Diamond p$.
+We define $\M=(\{w,x\},R,V)$ where $w\ R\ w$, $x\ R\ x$ and $w\ R\ x$. $V$ is such that $V(x,p)=\mathit{true}$ and $V(w,p)=\mathit{false}$. $\M$ is transitive and reflexive. We have that $\M,w\not\models p\rightarrow\Box\Diamond p$, as $\M,w\models p$ but $\M,x\not\models\Diamond p$. We show $\M$ in \textsc{Figure}\ \ref{2.2}.
 
 As \textbf{S4} is sound for models with a reflexive and transitive relation, the formula is unprovable.
 
-TODO : add schema
+\counterexample
 
 \paragraph{Proof in \textbf{S5}} 
 
@@ -276,7 +355,7 @@ TODO : add schema
 
 We still need to prove $(i)$ : $\frac{P\rightarrow Q\quad Q\rightarrow R}{P\rightarrow R}$.
 
-TODO : prove $(i)$
+TODO : prove $(i)$ (cut cannot be proved easily...)
 
 \question{3}
 Let $\M$ be a transitive and reflexive Kripke model.
@@ -301,19 +380,18 @@ $$\Box\Diamond\Box\Diamond\varphi\rightarrow\Box\Diamond\varphi$$.
 Let $p$ be a propositional letter.
 Assume that there exists some $\varphi$, such that for all pointed Kripke model $(\M,w)$, we have $\M,w\models\varphi\leftrightarrow\M,w\models D_p$.
 
-$\varphi$ cannot be true in any pointed Kripke model. Indeed, it would mean that $D_p$ is also true in every pointed Kripke model which is impossible : consider the Kripke model with only one world where $p$ is false.
+$\varphi$ cannot be true in every pointed Kripke model. Indeed, it would mean that $D_p$ is also true in every pointed Kripke model which is impossible : consider the Kripke model with only one world where $p$ is false.
 
 Thus, there exists at least one pointed Kripke model $\M,w$ such that $\M,w\models\neg\varphi$ and thus $\M,w\models\neg D_p$.
 Let $\M' = (W^\M\cup\{w_p\}, R^\M, V^\M[V(w_p,p)=\mathit{true}])$, in which $w_p$ is a new world added to $\M$ where $p$ is true.
 
-We have $\M',w\models D_p$ by definition of $D_p$, because $\M',w_p\models p$.
-But $\M',w\models\neg\varphi$, because $\M,w\models\neg\varphi$, and adding a world not connected in any way to $w$ cannot change the valuation of $\varphi$ for $w$.
+We have that $\M$ and $\M'$ are bisimilar : the relation that links any world of $\M$ with its copy in $\M'$ is a bisimulation, because $\M'$ is just a copy of $\M$ with a new disconnected world. Thus every world of $\M$ and its copy in $\M'$ make true the same formulas.
 
-Let's show more that last point more formally. TODO.
+We have $\M',w\models D_p$ by definition of $D_p$, because $\M',w_p\models p$.
+But $\M',w\models\neg\varphi$, because $\M,w\models\neg\varphi$, and $w\in\M$ and $w\in\M'$ make true the same modal formulas.  Which means that the difference is not defined by $\varphi$.
 
 Thus we have shown that one cannot define a Modal Logic formula that expresses the difference operator for a propositional letter (and therefore the difference operator cannot be defined for every formula).
 
-TODO : use bisimulation
 
 \exercise{4}
 \question{1}
@@ -323,11 +401,12 @@ Let $\M = (W,R,V)$ such that $W=\{x,y_1,y_2,z\}$, $R = \{(x,y_1),(y_2,z)\}$ and 
 
 In  $\M\tphi$, there are 3 worlds : $x\tphi=\{x\}$, $y_1\tphi=\{y_1,y_2\}$ and $z\tphi=\{z\}$.
 
-We also have $x\tphi\ R\tphi\ y_1\tphi$ and $y_1\tphi\ R\tphi\ z\tphi$, but we don't have $x\tphi\ R\tphi\ z\tphi$, which means that $\M\tphi$ isn't transitive.
+We also have $x\tphi\ R\tphi\ y_1\tphi$ and $y_1\tphi\ R\tphi\ z\tphi$, but we don't have $x\tphi\ R\tphi\ z\tphi$, which means that $\M\tphi$ isn't transitive. We show $\M$ and $\M\tphi$ \textsc{Figure}\ \ref{4}.
 
 We thus deduce that not every filtration of a transitive Kripke model is transitive.
 
-TODO: schema?
+\nottransitive
+
 
 \question{2}
 Let $\M$ be a transitive Kripke model. Let's show that, using the new relation, $\M\tphi$ is transitive.
