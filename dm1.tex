@@ -498,9 +498,43 @@ As $s$ and $u_n$ are both successors of $s$ by inductive hypothesis, then, using
 Which means that we have $s\ R\ u_m$ (and also $u_m\ R\ s$ because $s$ concludes the finite path), and $p$ is true in $u_m$. As $\Box(p\rightarrow\Box p)$ is true in $s$, then $p\rightarrow\Box p$ is true in $u_m$ and finally, $p$ is true in $s$.
 
 \paragraph{Conclusion}
-We have shown that in the class of frames that satisfies both $T$ and $E$, a frame satisfies also $Q$ iff $R^{-1}\subseteq R^*$. It means that in the class of frames validating $T$ and $E$, $Q$ defines the sub-class of frames in which $R^{-1}\subseteq R^$* is true.
+We have shown that in the class of frames that satisfies both $T$ and $E$, a frame satisfies also $Q$ iff $R^{-1}\subseteq R^*$. It means that in the class of frames validating $T$ and $E$, $Q$ defines the sub-class of frames in which $R^{-1}\subseteq R^*$ is true.
 
 \question{3}
+Let us write $P$ the property $P\ :\ \forall x,(x\ R\ y\leftrightarrow x=y)$.
 
+\paragraph{$P$ implies $T\wedge M\wedge E\wedge Q$:}
+Let $F$ be a Kripke frame that validates $P$. Let us show that $T\wedge M\wedge E\wedge Q$ is verified too for every valuation.
+\begin{itemize}
+\item $T$ : Because $T$ defines the class of reflexive Kripke frames.
+\item $M$ : If $p$ is true in a world, then $\Diamond\Box p$ is true, and if $p$ is false then $\Box\Diamond p$ is false. Thus, the implication is true in each world regardless of the valuation.
+\item $E$ : The first-order formula given in the first question is verified because every successor of a world is the node itself.
+\item $Q$ : If $p$ is true in a world, then the implication holds. When $p$ is false, $\Diamond p$ is also false, then the premise of the implication is false and thus the implication holds.
+\end{itemize}
+
+We thus have that $P$ implies $T\wedge M\wedge E\wedge Q$.
+
+\paragraph{$T\wedge M\wedge E\wedge Q$ implies $P$:}
+
+\paragraph{Lemma: another definition for $M$}
+We show here that $M$ defines the class of Kripke frames in which for each node that has at least one successor, one of its successors does not have strictly more thatn one successor itself. We'll note this property $N$.
+
+First, we have that $N$ implies $M$. Indeed let us take $F$ a Kripke frame in which $N$ is true.
+
+Then, let us show that $M$ implies $N$.
+TODO
+
+
+\paragraph{Proving the trivial accessibility relation} Let $\M$ be a Kripke frame that validates $T,M,E$ and $Q$ for every valuation $V$. Let us show that $F$ also validates $P$.
+
+Let $x,y\in\M$. If $x=y$, then we have $x\ R\ y$ because $F$ is reflexive as it validates $T$.
+Now let us show that a world is its only successor.
+
+Let $x\in\M$. As $F$ validates $M$, and $x$ has at least one successor (itself), we know that there is some $y\in R(x)$ such that $y$ has at most one successor. Because of the relflexivity of $F$, this successor is $y$ itself. We will show that $x=y$. Indeed, if $y$ was different from $x$, then there would be no finite path from $y$ to $x$ because $R(y)=\{y\}$. And $F$ validates $T,E$ and $Q$ which means that such a path should exist.
+
+We then deduce that $x=y$. $x$ is then its successor that can have at most one successor : itself. It is thus impossible for $x$ to have another successor.
+
+\paragraph{Conclusion}
+Thus, we have proved that the class of frames which validates $T,M,E$ and $Q$ are exactly the Kripke frames with a trivial accessibility relation.
 
 \end{document}
