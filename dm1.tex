@@ -318,14 +318,14 @@ Let $Z_1$ and $Z_2$ be two bisimulations between $\M$ and $\M'$. Let $Z=Z_1\cup 
 
 \textit{Atom} is true for $Z$. Indeed, whenever $w\ Z\ v$, either $w\ Z_1\ v$ or $w\ Z_2\ v$. In each case, we have that $w$ and $v$ make true the same propositional letters because $Z_1$ and $Z_2$ are bisimulations.
 
-\textit{Forth} is true for $Z$. Consider the case where $w\ Z_1\ v$ (the case with $Z_2$ is the same). In that case, forall $w'$ such that $w\ R\ w'$, there exists some $v'$ such that $v\ R\ v'$ and $w'\ Z_1\ v'$. Then by definition of $Z$, we also have $w'\ Z\ v'$.
+\textit{Forth} is true for $Z$. Consider the case where $w\ Z_1\ v$ (the case with $Z_2$ is the same). In that case, for all $w'$ such that $w\ R\ w'$, there exists some $v'$ such that $v\ R\ v'$ and $w'\ Z_1\ v'$. Then by definition of $Z$, we also have $w'\ Z\ v'$.
 \textit{Back} is also true for $Z$ : the proof is symmetrical.
 
 Thus, $Z$ is a bisimulation between $\M$ and $\M'$.
 
 \paragraph{Finite number of bisimulations} Then, we show that between two finite Kripke frames, there exists only a finite number of bisimulation. Indeed, a bisimulation is included in the set $\mathcal{W}^\M\times\mathcal{W}^{\M'}$, which is finite.
 
-\paragraph{Union of bisimulations} We can now deduce that any non-empty union of bisimulations is a bissimulation recursively on the number of bisimulations in the collection. Since this number is finite, and because the union of two bisimulations is one too, then we have that the union of the whole collection is a bisimulation as well.
+\paragraph{Union of bisimulations} We can now deduce that any non-empty union of bisimulations is a bisimulation recursively on the number of bisimulations in the collection. Since this number is finite, and because the union of two bisimulations is one too, then we have that the union of the whole collection is a bisimulation as well.
 
 \paragraph{Maximal bisimulation} Let $Z_m = \underset{X \mathit{bisimulation}}{\bigcup} X$. The union is finite because there only is a finite number of bisimulations. There is always at least one bisimulation between two Kripke models : $\emptyset$. We can thus apply the previous result and deduce that $Z_m$ is a bisimulation. Moreover, for each bisimulation $X$, by definition of $Z_m$, we have $X\subseteq Z_m$. Thus, $Z_m$ is a maximal bisimulation.
 
@@ -350,7 +350,7 @@ We present a proof using the tableau method and another one in the Hilbert syste
 
 
 \question{2}
-\paragraph{Unprovability in \textbf{S4}} To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} (reflexivity and transitivity) in which the formula is not true. We then conclude with the soundness of the deductive system that, if the formula was provable, then it would hold in our exemple.
+\paragraph{Unprovability in \textbf{S4}} To show that $p\rightarrow\Box\Diamond p$ cannot be proved in \textbf{S4}, we give a Kripke model that verify the hypothesis of \textbf{S4} (reflexivity and transitivity) in which the formula is not true. We then conclude with the soundness of the deductive system that, if the formula was provable, then it would hold in our example.
 
 We define $\M=(\{w,x\},R,V)$ where $w\ R\ w$, $x\ R\ x$ and $w\ R\ x$. $V$ is such that $V(x,p)=\mathit{true}$ and $V(w,p)=\mathit{false}$. $\M$ is transitive and reflexive. We have that $\M,w\not\models p\rightarrow\Box\Diamond p$, as $\M,w\models p$ but $\M,x\not\models\Diamond p$. We show $\M$ in \textsc{Figure}\ \ref{2.2}.
 
@@ -359,22 +359,17 @@ As \textbf{S4} is sound for models with a reflexive and transitive relation, the
 \counterexample
 
 \paragraph{Proof in \textbf{S5}} 
+The formula $p\rightarrow\Box\Diamond p$ in \textbf{S5} because there is the Reflexivity Axiom of \textbf{T} : $p\rightarrow\Diamond p$ and the \textbf{S5} axiom : $\Diamond p\rightarrow\Box\Diamond p$.
 
-\begin{tabular}{l l l}
-1 & $p\rightarrow\Diamond p$ & Reflexivity Axiom\\
-2 & $\Diamond p\rightarrow\Box\Diamond p$ & S5 Axiom\\
-3 & $p\rightarrow\Box\Diamond p$ & $(i)$ on 1,2\\
-\end{tabular}
+We thus deduce that $p\rightarrow\Box\Diamond p$.\\
+\textit{Note that we used a deduction principle similar to the Cut, which isn't introduced as an axiom of our deductive system. But we can use the completeness of our deductive system for propositionnal logic to be assured of the soundness of such a reasoning.}
 
-We still need to prove $(i)$ : $\frac{P\rightarrow Q\quad Q\rightarrow R}{P\rightarrow R}$.
-
-TODO : prove $(i)$ (cut cannot be proved easily...)
 
 \question{3}
 Let $\M$ be a transitive and reflexive Kripke model.
 Let $w$ be a world in $\M$, such that $\M,w\models\Box\Diamond\Box\Diamond\varphi$.
 
-Then, forall $w_1$ such that $w\ R\ w$, there exists some $w_2$ such that $w_1\ R\ w_2$ and forall $w_3$ such that $w_2\ R\ w_3$, there exists $w_4$ such that $w_3\ R\ w_4$ and $w_4\models\varphi$.
+Then, for all $w_1$ such that $w\ R\ w$, there exists some $w_2$ such that $w_1\ R\ w_2$ and for all $w_3$ such that $w_2\ R\ w_3$, there exists $w_4$ such that $w_3\ R\ w_4$ and $w_4\models\varphi$.
 
 Let $v_1$ be a successor of $w$ in $\M$. By assumption, there exists some $w_2$, such that $v1\ R\ w_2$, and $w_2\models\Box\Diamond\varphi$. 
 Let $w_3$ be a successor of $w_2$. $w_3$ exists because $\M$ is reflexive.
@@ -386,7 +381,7 @@ Thus, for each successor $v_1$ of $w$, we can find a successor of $v_1$ that sat
 
 Thus, $\M,w\models\Box\Diamond\varphi$.
 
-Finally, we have that in a relfexive and transitive Kripke model,
+Finally, we have that in a reflexive and transitive Kripke model,
 $$\Box\Diamond\Box\Diamond\varphi\rightarrow\Box\Diamond\varphi$$.
 
 \exercise{3}
@@ -426,13 +421,13 @@ Let $\M$ be a transitive Kripke model. Let's show that, using the new relation, 
 
 Let $x\tphi, y\tphi$ and $z\tphi$ $\in W\tphi$ such that $x\tphi\ R\tphi\ y\tphi$ and $y\tphi\ R\tphi\ z\tphi$. If no such worlds exists, then $\M\tphi$ is trivially transitive. Let us show that $x\tphi\ R\tphi\ z\tphi$ which would mean that $\M\tphi$ is transitive.
 
-As we have $x\tphi\ R\tphi\ y\tphi$, then forall $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$, if $\M,y\models\psi\vee\Diamond\psi$ then $\M,x\models\Diamond\psi$ by definition of the new relation of $\M\tphi$. (1)
+As we have $x\tphi\ R\tphi\ y\tphi$, then for all $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$, if $\M,y\models\psi\vee\Diamond\psi$ then $\M,x\models\Diamond\psi$ by definition of the new relation of $\M\tphi$. (1)
 
-We also have $y\tphi\ R\tphi\ z\tphi$, then forall $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$, if $\M,z\models\psi\vee\Diamond\psi$ then $\M,y\models\Diamond\psi$. (2)
+We also have $y\tphi\ R\tphi\ z\tphi$, then for all $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$, if $\M,z\models\psi\vee\Diamond\psi$ then $\M,y\models\Diamond\psi$. (2)
 
 To show that $x\tphi\ R\tphi\ z\tphi$, let us take $\psi$ such that $\Diamond\psi\in\mathit{Sub}(\varphi)$ and $\M,z\models\psi\vee\Diamond\psi$. If no such $\psi$ exists, then we trivially have $x\tphi\ R\tphi\ z\tphi$. Let us show $\M,x\models\Diamond\psi$.
 
-Using (2), we have that $\M,y\models\Diamond\psi$. Then we have $\M,y\models\psi\vee\Diamond\psi$ by defnitiion of $\models$. Then using (1), we deduce that $\M,x\models\Diamond\psi$. We thus have $x\tphi\ R\tphi\ z\tphi$.
+Using (2), we have that $\M,y\models\Diamond\psi$. Then we have $\M,y\models\psi\vee\Diamond\psi$ by definition of $\models$. Then using (1), we deduce that $\M,x\models\Diamond\psi$. We thus have $x\tphi\ R\tphi\ z\tphi$.
 
 Then, we have shown that $\M\tphi$ is transitive. We deduce that any filtration of a transitive model is transitive using this relation. As we did not use the transitivity of $\M$ in our proof, we can also deduce that the filtration with the new relation of any Kripke model is transitive.
 
@@ -465,7 +460,7 @@ We want to show that for every Kripke frame $F$, if $F$ validates $T,E$ and $Q$ 
 Assume that there exists some frame $F$, such that $F$ validates $T,E$ and $Q$ for any valuation, but there also exists $s$ an $t$ in $F$ such that $s\ R\ t$ but there exists no finite path from $t$ to $s$.
 Start by noticing that necessarily, $s\neq t$ or there would exist such a finite path from $t$ to $s$.
 
-Let us consider the valuation $V$ where the propositionnal letter $p$ is true in $t$, true in the succssors of $t$ ($R(t)$), true in their successors\dots true in any world that can be reached from $t$ and only in them ($R^*(t)$). Obviously, $s$ isn't one of these worlds, or else it would mean that there exists a path from $t$ to $s$.
+Let us consider the valuation $V$ where the propositionnal letter $p$ is true in $t$, true in the successors of $t$ ($R(t)$), true in their successors\dots true in any world that can be reached from $t$ and only in them ($R^*(t)$). Obviously, $s$ isn't one of these worlds, or else it would mean that there exists a path from $t$ to $s$.
 
 
 In this Kripke world, we have that $(F,V),s\models\Diamond p$, because $t$ is a successor of $s$ in which $p$ is true. 
@@ -473,18 +468,17 @@ In this Kripke world, we have that $(F,V),s\models\Diamond p$, because $t$ is a 
 We also have $(F,V),s\models\Box(p\rightarrow\Box p)$, because in each successor of $s$, $p\rightarrow\Box p$ is true. Let us show that last point. Let $u$ be a successor of $s$.
 
 \begin{itemize}
-\item If $u=s$, then the implication is true because $(F,V),s\not\models p$.
 \item If $u\in R^*(t)$, then the implication is true because $p$ is true in $u$ and in each of its successors (because they also are in $R^*(t)$).
 \item If $u\not\in R^*(t)$, then the implication is true because $(F,V),u\not\models p$.
 \end{itemize}
 
-We thus have that $(F,V),s\models (\Diamond p\wedge\Box(p\rightarrow\Box p))$, but $(F,V),s\not\models p$, which is in contradiction with the fact that $F$ satisfies $(Q)$.
+We thus have that $(F,V),s\models (\Diamond p\wedge\Box(p\rightarrow\Box p))$, but $(F,V),s\not\models p$, which is in contradiction with the fact that $F$ validates $(Q)$.
 
 We thus have that in a frame that satisfies $T,E$ and $Q$, $R^{-1}\subseteq R^*$.
 
 
 \paragraph{$R^{-1}\subseteq R^*$ implies $Q$:}
-Let $\M$ be a Kripke model in which $R^{-1}\subseteq R^*$, that satisfies both $T$ and $E$. Let us show that $Q$ holds in $\M$.
+Let $\M$ be a Kripke model in which $R^{-1}\subseteq R^*$, that validates both $T$ and $E$. Let us show that $Q$ holds in $\M$.
 
 Let $s\in\M$, such that $\M,s\models(\Diamond p\wedge\Box(p\rightarrow\Box p))$. Let us show that $p$ holds in $s$. As $\M,s\models\Diamond p$ there is some $u_0$, a successor of $s$ in which $p$ is true. As $R^{-1}\subseteq R^*$, there exists $u_1,u_2\dots u_m$ the shortest finite path to $s$ from $u_0$.
 
@@ -517,11 +511,14 @@ We thus have that $P$ implies $T\wedge M\wedge E\wedge Q$.
 \paragraph{$T\wedge M\wedge E\wedge Q$ implies $P$:}
 
 \paragraph{Lemma: another definition for $M$}
-We show here that $M$ defines the class of Kripke frames in which for each node that has at least one successor, one of its successors does not have strictly more thatn one successor itself. We'll note this property $N$.
+We show here that $M$ defines the class of Kripke frames in which each world has a successor that does not have strictly more than one successor itself. We'll note this property $N$.
 
-First, we have that $N$ implies $M$. Indeed let us take $F$ a Kripke frame in which $N$ is true.
+First, we have that $N$ implies $M$. Indeed let us take $\M$ a Kripke model in which $N$ is true. Let $x$ be a world of $\M$. Write $y$ the successor of $x$ that does not have more than one successor.
+If $y$ has zero successor, then $\M,x\not\models\Box\Diamond p$ and then $\M,x\models\Box\Diamond p\rightarrow\Diamond\Box p$. If $y$ has exactly one successor $z$ and $\M,x\models\Box\Diamond p$, then $\M,z\models p$ and then $\M,x\models\Box\Diamond p\rightarrow\Diamond\Box p$.
 
-Then, let us show that $M$ implies $N$.
+Then, let us show that $M$ implies $N$. Let us take $F$ a Kripke frame in which $M$ is true. Assume that $N$ isn't true, which means that there is one world $x$, such that each of its successors $y_i$ has more than 2 successors. Let us take the valuation $V$ in which $p$ is true in only of the successors of each $y_i$, in such a way that $\forall i,(F,V),y_i\models\Diamond p$. We have that $(F,V),x\models\Box\Diamond p$. However
+
+
 TODO
 
 
@@ -530,7 +527,7 @@ TODO
 Let $x,y\in\M$. If $x=y$, then we have $x\ R\ y$ because $F$ is reflexive as it validates $T$.
 Now let us show that a world is its only successor.
 
-Let $x\in\M$. As $F$ validates $M$, and $x$ has at least one successor (itself), we know that there is some $y\in R(x)$ such that $y$ has at most one successor. Because of the relflexivity of $F$, this successor is $y$ itself. We will show that $x=y$. Indeed, if $y$ was different from $x$, then there would be no finite path from $y$ to $x$ because $R(y)=\{y\}$. And $F$ validates $T,E$ and $Q$ which means that such a path should exist.
+Let $x\in\M$. As $F$ validates $M$, and $x$ has at least one successor (itself), we know that there is some $y\in R(x)$ such that $y$ has at most one successor. Because of the reflexivity of $F$, this successor is $y$ itself. We will show that $x=y$. Indeed, if $y$ was different from $x$, then there would be no finite path from $y$ to $x$ because $R(y)=\{y\}$. And $F$ validates $T,E$ and $Q$ which means that such a path should exist.
 
 We then deduce that $x=y$. $x$ is then its successor that can have at most one successor : itself. It is thus impossible for $x$ to have another successor.
 
