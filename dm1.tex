@@ -450,9 +450,12 @@ In the case where $\forall z,y_2\ R\ z\rightarrow y_1\ R\ z$, then every success
 In both cases, we have that for any successor $y_2$ of $x$ in $\M$, $\M,y_2\models\Diamond p\vee\Box q$. Which means that $\M,x\models\Diamond(\Diamond p\wedge\Box q)\rightarrow\Box(\Diamond p\vee\Box q)$. It shows that any model that makes true the first-order formula also makes true the modal formula (E).
 
  
-
 \paragraph{The modal formula implies the first-order formula}
+Let $F$ be a Kripke frame in which $\forall x\in F,\forall V, (F,V),x\models\Diamond(\Diamond p\wedge\Box q)\rightarrow\Box(\Diamond p\vee\Box q)$. Let $x,y_1,y_2$ be worlds of $F$ such that $x\ R\ y_1$ and $x\ R\ y_2$. Let us show that either $\forall z, y_1\ R\ z\rightarrow y_2\ R\ z$ or $\forall z, y_2\ R\ z\rightarrow y_1\ R\ z$.
 
+Let's assume the negation : $\exists z_1,z_2, (y_1\ R\ z_1), (y_2\ R\ z_2), \neg(y_1\ R\ z_2), \neg(y_2\ R\ z_1)$. For the valuation $V$ such that $p$ is true only in $z_1$ and false everywhere else, and $q$ is false in $z_2$ and true everywhere else, we have that $(F,V),x\models\Diamond(\Diamond p\wedge\Box q)$, because $(F,V),y_1\models(\Diamond p\wedge\Box q)$. However, $(F,V)\not\models\Box(\Diamond p\vee\Box q)$ because in $y_2$ there is no successor that satisfies $p$ (because only $z_1$ satisfies $p$ and $\neg(y_2\ R\ z_1)$) and there is one successor, $z_2$, in which $q$ is false.
+
+Thus, we have proved that (E) corresponds to the first-order formula, which means that the class of frames that satisfies (E) is exactly the class of frames that satisfies the first-order formula.
 
 \question{2}
 \question{3}
