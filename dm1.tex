@@ -219,7 +219,7 @@ We will prove the two implications separately.
 }
 
 \def\nottransitive{
-  \begin{figure} 
+  \begin{figure}%
     \centering
     \begin{tikzpicture}[%
         ->,
@@ -444,7 +444,7 @@ Let $\M$ be a Kripke model which satisfies the first-order formula. Let $x$ be a
 If $\M,x\not\models\Diamond(\Diamond p\wedge\Box q)$, then the implication is verified. If $\M,x\models\Diamond(\Diamond p\wedge\Box q)$, then there exists some $y_1$, such that $x\ R\ y_1$ and $\M,y_1\models(\Diamond p\wedge\Box q)$. Let $y_2$ be a world of $\M$ such that $x\ R\ y_2$. Let's show that $\M,y_2\models\Diamond p\vee\Box q$.
 
 We can use the first-order formula to deduce that we have $(\forall z,y_1\ R\ z\rightarrow y_2\ R\ z)$ or $(\forall z,y_2\ R\ z\rightarrow y_1\ R\ z)$.
-In the case where $\forall z,y_1\ R\ z\rightarrow y_2\ R\ z$, then every successor of $y_1$ is a successor of $y_2$. As we had $y_1\models\Diamond p\wedge\Bow q$, we have that $\M,y_1\models\Diamond p$, then there exists some $z$ such that $y_1\ R\ z$ and $\M,z\models p$. With the first-order formula, we have that $y_2\ R\ z$, which means $\M,y_2\models\Diamond p$, and thus $\M,y_2\models\Diamond p\vee\Box q$.
+In the case where $\forall z,y_1\ R\ z\rightarrow y_2\ R\ z$, then every successor of $y_1$ is a successor of $y_2$. As we had $y_1\models\Diamond p\wedge\Box q$, we have that $\M,y_1\models\Diamond p$, then there exists some $z$ such that $y_1\ R\ z$ and $\M,z\models p$. With the first-order formula, we have that $y_2\ R\ z$, which means $\M,y_2\models\Diamond p$, and thus $\M,y_2\models\Diamond p\vee\Box q$.
 In the case where $\forall z,y_2\ R\ z\rightarrow y_1\ R\ z$, then every successor of $y_2$ is a successor of $y_1$. Let $z$ be a successor of $y_2$. It is a successor of $y_1$ and thus $\M,z\models q$ as $\M,y_1\models\Box q$. Then $\M,y_2\models\Box q$ and thus $\M,y_2\models\Diamond p\vee\Box q$.
 
 In both cases, we have that for any successor $y_2$ of $x$ in $\M$, $\M,y_2\models\Diamond p\vee\Box q$. Which means that $\M,x\models\Diamond(\Diamond p\wedge\Box q)\rightarrow\Box(\Diamond p\vee\Box q)$. It shows that any model that makes true the first-order formula also makes true the modal formula (E).
@@ -458,6 +458,33 @@ Let's assume the negation : $\exists z_1,z_2, (y_1\ R\ z_1), (y_2\ R\ z_2), \neg
 Thus, we have proved that (E) corresponds to the first-order formula, which means that the class of frames that satisfies (E) is exactly the class of frames that satisfies the first-order formula.
 
 \question{2}
+
+\paragraph{$Q$ implies $R^{-1}\subseteq R^*$:}
+We want to show that for every Kripke frame $F$, if $F$ validates $T,E$ and $Q$ for any valuation, then $R^{-1}\subseteq R^*$. Let us assume the opposite and show that it isn't possible.
+
+Assume that there exists some frame $F$, such that $F$ validates $T,E$ and $Q$ for any valuation, but there also exists $s$ an $t$ in $F$ such that $s\ R\ t$ but there exists no finite path from $t$ to $s$.
+Start by noticing that necessarily, $s\neq t$ or there would exist such a finite path from $t$ to $s$.
+
+Let us consider the valuation $V$ where the propositionnal letter $p$ is true in $t$, true in the succssors of $t$ ($R(t)$), true in their successors\dots true in any world that can be reached from $t$ and only in them ($R^*(t)$). Obviously, $s$ isn't one of these worlds, or else it would mean that there exists a path from $t$ to $s$.
+
+
+In this Kripke world, we have that $(F,V),s\models\Diamond p$, because $t$ is a successor of $s$ in which $p$ is true. 
+
+We also have $(F,V),s\models\Box(p\rightarrow\Box p)$, because in each successor of $s$, $p\rightarrow\Box p$ is true. Let us show that last point. Let $u$ be a successor of $s$.
+
+\begin{itemize}
+\item If $u=s$, then the implication is true because $(F,V),s\not\models p$.
+\item If $u\in R^*(t)$, then the implication is true because $p$ is true in $u$ and in each of its successors (because they also are in $R^*(t)$).
+\item If $u\not\in R^*(t)$, then the implication is true because $(F,V),u\not\models p$.
+\end{itemize}
+
+We thus have that $(F,V),s\models (\Diamond p\wedge\Box(p\rightarrow\Box p))$, but $(F,V),s\not\models p$, which is in contradiction with the fact that $F$ satisfies $(Q)$.
+
+We thus have that in a frame that satisfies $T,E$ and $Q$, $R^{-1}\subseteq R^*$.
+
+
+\paragraph{$R^{-1}\subseteq R^*$ implies $Q$:}
+
 \question{3}
 
 
