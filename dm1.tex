@@ -438,6 +438,22 @@ Then, we have shown that $\M\tphi$ is transitive. We deduce that any filtration 
 
 \exercise{5}
 \question{1}
+\paragraph{The first-order formula implies the modal formula:}
+Let $\M$ be a Kripke model which satisfies the first-order formula. Let $x$ be a world of $\M$. Let's show that $\M,x\models\Diamond(\Diamond p\wedge\Box q)\rightarrow\Box(\Diamond p\vee\Box q)$.
+
+If $\M,x\not\models\Diamond(\Diamond p\wedge\Box q)$, then the implication is verified. If $\M,x\models\Diamond(\Diamond p\wedge\Box q)$, then there exists some $y_1$, such that $x\ R\ y_1$ and $\M,y_1\models(\Diamond p\wedge\Box q)$. Let $y_2$ be a world of $\M$ such that $x\ R\ y_2$. Let's show that $\M,y_2\models\Diamond p\vee\Box q$.
+
+We can use the first-order formula to deduce that we have $(\forall z,y_1\ R\ z\rightarrow y_2\ R\ z)$ or $(\forall z,y_2\ R\ z\rightarrow y_1\ R\ z)$.
+In the case where $\forall z,y_1\ R\ z\rightarrow y_2\ R\ z$, then every successor of $y_1$ is a successor of $y_2$. As we had $y_1\models\Diamond p\wedge\Bow q$, we have that $\M,y_1\models\Diamond p$, then there exists some $z$ such that $y_1\ R\ z$ and $\M,z\models p$. With the first-order formula, we have that $y_2\ R\ z$, which means $\M,y_2\models\Diamond p$, and thus $\M,y_2\models\Diamond p\vee\Box q$.
+In the case where $\forall z,y_2\ R\ z\rightarrow y_1\ R\ z$, then every successor of $y_2$ is a successor of $y_1$. Let $z$ be a successor of $y_2$. It is a successor of $y_1$ and thus $\M,z\models q$ as $\M,y_1\models\Box q$. Then $\M,y_2\models\Box q$ and thus $\M,y_2\models\Diamond p\vee\Box q$.
+
+In both cases, we have that for any successor $y_2$ of $x$ in $\M$, $\M,y_2\models\Diamond p\vee\Box q$. Which means that $\M,x\models\Diamond(\Diamond p\wedge\Box q)\rightarrow\Box(\Diamond p\vee\Box q)$. It shows that any model that makes true the first-order formula also makes true the modal formula (E).
+
+ 
+
+\paragraph{The modal formula implies the first-order formula}
+
+
 \question{2}
 \question{3}
 
