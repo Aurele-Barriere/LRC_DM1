@@ -484,6 +484,21 @@ We thus have that in a frame that satisfies $T,E$ and $Q$, $R^{-1}\subseteq R^*$
 
 
 \paragraph{$R^{-1}\subseteq R^*$ implies $Q$:}
+Let $\M$ be a Kripke model in which $R^{-1}\subseteq R^*$, that satisfies both $T$ and $E$. Let us show that $Q$ holds in $\M$.
+
+Let $s\in\M$, such that $\M,s\models(\Diamond p\wedge\Box(p\rightarrow\Box p))$. Let us show that $p$ holds in $s$. As $\M,s\models\Diamond p$ there is some $u_0$, a successor of $s$ in which $p$ is true. As $R^{-1}\subseteq R^*$, there exists $u_1,u_2\dots u_m$ the shortest finite path to $s$ from $u_0$.
+
+Let us show recursively that $\forall i\in[0,m], V(u_i,p)=\mathit{true\ } \text{ and\ } s\ R\ u_i$.
+
+It is true for $u_0$.
+If it is true for $u_n$ where $n<m$, then let us show that it is also true for $u_{n+1}$.
+
+As $s$ and $u_n$ are both successors of $s$ by inductive hypothesis, then, using the question 1 and because $\M$ satisfies $E$, either $R(s)\subseteq R(u_n)$ or $R(u_n)\subseteq R(s)$. If $R(s)\subseteq R(u_n)$, then we have $u_n\ R\ s$ because $s\in R(s)$ (as $\M$ is reflexive because it satisfies $T$). This is absurd because we said that $u_1\dots u_m$ was the shortest path, not $u_1\dots u_n$. In the other case, we have that $R(u_n)\subseteq R(s)$, which implies that $s\ R\ u_{n+1}$. We also have that $p$ is true in $u_{n+1}$ because $\M,s\models\Box(p\rightarrow\Box p)$ and $u_n\in R(s)$. Our hypothesis is thus proved recursively.
+
+Which means that we have $s\ R\ u_m$ (and also $u_m\ R\ s$ because $s$ concludes the finite path), and $p$ is true in $u_m$. As $\Box(p\rightarrow\Box p)$ is true in $s$, then $p\rightarrow\Box p$ is true in $u_m$ and finally, $p$ is true in $s$.
+
+\paragraph{Conclusion}
+We have shown that in the class of frames that satisfies both $T$ and $E$, a frame satisfies also $Q$ iff $R^{-1}\subseteq R^*$. It means that in the class of frames validating $T$ and $E$, $Q$ defines the sub-class of frames in which $R^{-1}\subseteq R^$* is true.
 
 \question{3}
 
