@@ -15,7 +15,7 @@
 \usepackage{float}
 
 \author{Aur\`ele Barri\`ere}
-\title{LRC DM 1}
+\title{\vspace{-3.5cm}LRC DM 1}
 \date{February 3, 2017}
 
 \def\exercise#1{\ \vspace{1cm}\\\Large\textbf{Exercise #1}\normalsize\\}
@@ -267,7 +267,46 @@ We will prove the two implications separately.
 }
 
 
+\def\smallest{
 
+  \begin{figure}
+      \begin{center}
+\begin{tikzpicture}   
+\node (p1) at (0,0) {$1$};
+    \node (p2) at (2,0) {$2$};
+\node (p3) at (4,0) {$3,p$};
+\node (p4) at (0,-2) {$4,p$};
+\node (p5) at (2,-2) {$5$};
+\node (p6) at (4,-2) {$6$};
+\node (p7) at (0,-4) {$7,p$};
+\node (p8) at (2,-4) {$8$};
+\node (p9) at (4,-4) {$9,t$};
+\node (p10) at (6,-4) {$w,t$};
+    \begin{scope}[every path/.style={->}]
+       \draw (p1) edge  (p2);
+       \draw (p2) edge  (p3);
+       \draw (p1) edge  (p4);
+       \draw (p2) edge  (p5);
+       \draw (p3) edge  (p6);
+       \draw (p4) edge  (p5);
+       \draw (p5) edge  (p6);
+       \draw (p4) edge  (p7);
+       \draw (p5) edge  (p8);
+       \draw (p6) edge  (p9);
+       \draw (p7) edge  (p8);
+       \draw (p8) edge  (p9);
+    \end{scope}
+    \begin{scope}[every path/.style={-}]
+      \draw (p9) edge (p10);
+    \end{scope}  
+
+\end{tikzpicture}
+\caption{Exercice 1 question 2: Smallest Bisimulation}
+\label{small}
+\end{center}
+\end{figure}
+
+}
 
 
 \begin{document}
@@ -308,8 +347,8 @@ The Kripke model with only one world in which the propositional letter $t$ is tr
 
 We then define $Z$ the bisimulation such that $9\ Z\ w$. $Z$ is a bisimulation : in both $9$ and $w$, only $t$ is true, and both $9$ and $w$ have no successors. And this Kripke model is the smallest possible as it only has one world.
 
-The Kripke contraction is thus $(\{w\},\emptyset,V)$ such that $V(w,t)=\mathit{true}$.
-
+The Kripke contraction is thus $(\{w\},\emptyset,V)$ such that $V(w,t)=\mathit{true}$. It is shown \textsc{Figure}\ \ref{small}.
+\smallest
 
 \question{3}
 
