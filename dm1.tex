@@ -301,7 +301,7 @@ We will prove the two implications separately.
     \end{scope}  
 
 \end{tikzpicture}
-\caption{Exercice 1 question 2: Smallest Bisimulation}
+\caption{Exercise 1 question 2: Smallest Bisimulation}
 \label{small}
 \end{center}
 \end{figure}
@@ -398,7 +398,7 @@ As \textbf{S4} is sound for models with a reflexive and transitive relation, the
 \counterexample
 
 \paragraph{Proof in \textbf{S5}} 
-The formula $p\rightarrow\Box\Diamond p$ in \textbf{S5} because there is the Reflexivity Axiom of \textbf{T} : $p\rightarrow\Diamond p$ and the \textbf{S5} axiom : $\Diamond p\rightarrow\Box\Diamond p$.
+The formula $p\rightarrow\Box\Diamond p$ is true in \textbf{S5} because there is the Reflexivity Axiom of \textbf{T} : $p\rightarrow\Diamond p$ and the \textbf{S5} axiom : $\Diamond p\rightarrow\Box\Diamond p$.
 
 We thus deduce that $p\rightarrow\Box\Diamond p$.\\
 \textit{Note that we used a deduction principle similar to the Cut, which isn't introduced as an axiom of our deductive system. But we can use the completeness of our deductive system for propositionnal logic to be assured of the soundness of such a reasoning.}
@@ -561,7 +561,7 @@ Let us define a valuation $V$ such that $(F,V),x\models\Box\Diamond p$ but $(F,V
 Let $y_1\dots y_m$ be the successors of $x$. We know that $m\geq 2$.
 As the Kripke frame validates $E$, then with question 1, we know that there exists some permutation $\sigma$ such that $R(y_{\sigma(1)})\subseteq R(y_{\sigma(2)}) \subseteq\dots\subseteq R(y_{\sigma(m)})$. If there was no such order, we could find two successors of $x$, $y_u$ and $y_v$, such that $R(y_u)\not\subseteq R(y_v)$ and $R(y_v)\not\subseteq R(y_u)$ which would contradict the question 1. 
 
-Consider $y_{\sigma(1)}$ and call it $z$. If $z$ has stricly more than one successor, then we can choose the valuation where $p$ is true in only one of them. This way, we'll have $(F,V),x\models\Box\Diamond p$ but $(F,V),x\not\models\Diamond\Box p$.
+Consider $y_{\sigma(1)}$ and call it $z$. If $z$ has strictly more than one successor, then we can choose the valuation where $p$ is true in only one of them. This way, we'll have $(F,V),x\models\Box\Diamond p$ but $(F,V),x\not\models\Diamond\Box p$.
 
 If $z$ has exactly one successor, then it is $z$ itself as the frame is reflexive.
 
